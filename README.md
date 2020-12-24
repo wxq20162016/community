@@ -1,5 +1,6 @@
 ## 资料
-https://spring.io/guides/gs/rest-service/
+[Spring 官网示例] https://spring.io/guides/gs/rest-service/
+[Github OAuth] https://docs.github.com/en/free-pro-team@latest/developers/apps/building-oauth-apps
 ##配置密钥
 https://blog.csdn.net/lqlqlq007/article/details/78983879
 ## 追加提交
