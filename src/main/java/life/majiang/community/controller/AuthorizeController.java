@@ -13,7 +13,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 @Controller
@@ -34,7 +36,9 @@ public class AuthorizeController {
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code") String code,
                            @RequestParam(name="state") String state,
-                           HttpServletRequest request
+                           HttpServletRequest request,
+                           //引入响应体方法
+                           HttpServletResponse response
     )
 
     {
@@ -52,14 +56,15 @@ public class AuthorizeController {
             //redirect 不拼接url 直接跳转
             //登录成功写 cookie和sessions
             User user=new User();
-            user.setToken(UUID.randomUUID().toString());
+            String token = UUID.randomUUID().toString();
+            user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
-
             userMapper.insert(user);
-            request.getSession().setAttribute("user",githubUser);
+            //在响应体里面写入Cookie
+            response.addCookie(new Cookie("token",token));
         }else{
             //登录失败，重新登录
         }
