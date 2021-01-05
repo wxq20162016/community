@@ -13,7 +13,7 @@ public class Question {
     private String title;
     private Integer id;
     private String description;
-    private Long gmt_create;
+    private Long gmtCreate;
     private Long gmtModified;
     private Integer creator;
     private Integer commentCount;
