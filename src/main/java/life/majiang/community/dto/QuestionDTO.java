@@ -1,15 +1,10 @@
-package life.majiang.community.model;
+package life.majiang.community.dto;
 
-import lombok.AllArgsConstructor;
+import life.majiang.community.model.User;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.awt.*;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Question {
+public class QuestionDTO {
     private String title;
     private Integer id;
     private String description;
@@ -21,4 +16,5 @@ public class Question {
     private Integer likeCount;
     private String tag;
     private String avatarUrl;
+    private User user;
 }
