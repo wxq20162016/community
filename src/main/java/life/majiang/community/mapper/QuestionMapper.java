@@ -3,6 +3,7 @@ package life.majiang.community.mapper;
 import life.majiang.community.model.Question;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public interface QuestionMapper {
     void  create(Question question);
 
     @Select("select * from question limit #{offset},#{size}")
-    List<Question> list(Integer offset, Integer size);
+    List<Question> list(@Param(value = "offset") Integer offset,@Param(value = "size") Integer size);
 
     //count(1) 比count(*) 效率更高 count(1)  只查询第一列
     @Select("select count(1) from question")
