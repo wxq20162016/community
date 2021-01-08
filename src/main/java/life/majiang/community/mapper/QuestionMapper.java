@@ -22,5 +22,12 @@ public interface QuestionMapper {
     //count(1) 比count(*) 效率更高 count(1)  只查询第一列
     @Select("select count(1) from question")
     Integer count();
+
+    @Select("select * from question where creator =#{userId} limit #{offset},#{size}")
+    List<Question> listByUserId(@Param(value = "userId") Integer userId,@Param(value = "offset") Integer offset,@Param(value = "size") Integer size);
+
+    @Select("select count(1) from question where creator=#{userId}")
+    Integer countByUserId(@Param("userId") Integer userId);
+
 }
 
