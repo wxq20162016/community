@@ -71,7 +71,7 @@ public class AuthorizeController {
             return "redirect:/";
         }
     }
-    //退出登录 清除cookie和session
+    //退出登录 清除cookie和session , 用户名从session中获取，cookie存储token
     @GetMapping("/logout")
     public String logout(HttpServletRequest request,
                          HttpServletResponse response

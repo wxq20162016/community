@@ -10,4 +10,7 @@ git commit --amend --no-edit  ##如果删除了gitigrone 需要先pull 再push
 https://blog.csdn.net/lqlqlq007/article/details/78983879
 
 
-## 脚本 
+## mysql 版本要求：
+至少mysql5.7 
+mysql8.0 以上需要更改 mysql-connector-java 依赖版本
+和spring.datasource.driver-class-name 的值
