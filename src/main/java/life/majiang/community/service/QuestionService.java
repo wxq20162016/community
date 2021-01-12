@@ -63,4 +63,11 @@ public class QuestionService {
         //service 层给dto层传数据
         return paginationDTO;
     }
+
+    public QuestionDTO getById(Integer id) {
+        Question question= questionMapper.getById(id);
+        QuestionDTO questionDTO=new QuestionDTO();
+        BeanUtils.copyProperties(question,questionDTO);
+        return questionDTO;
+    }
 }
