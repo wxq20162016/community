@@ -14,3 +14,5 @@ https://blog.csdn.net/lqlqlq007/article/details/78983879
 至少mysql5.7 
 mysql8.0 以上需要更改 mysql-connector-java 依赖版本
 和spring.datasource.driver-class-name 的值
+## 逆向工程构建命令
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

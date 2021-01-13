@@ -30,7 +30,7 @@ public class QuestionService {
         List<QuestionDTO> questionDTOList=new ArrayList<>();
 
         for (Question question : questions) {
-            User user =userMapper.findById(question.getCreator());
+            User user =userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question,questionDTO);
             questionDTO.setUser(user);
@@ -52,7 +52,7 @@ public class QuestionService {
         List<QuestionDTO> questionDTOList=new ArrayList<>();
 
         for (Question question : questions) {
-            User user =userMapper.findById(question.getCreator());
+            User user =userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question,questionDTO);
             questionDTO.setUser(user);
@@ -68,7 +68,7 @@ public class QuestionService {
         Question question= questionMapper.getById(id);
         QuestionDTO questionDTO=new QuestionDTO();
         BeanUtils.copyProperties(question,questionDTO);
-        User user=userMapper.findById(question.getCreator());
+        User user=userMapper.selectByPrimaryKey(question.getCreator());
         //用userMapper的findById方法查出user信息再把user信息 使用set方法存入到questionDTO中 相当于查出一个表的数据 再存入DTO层组合成新的数据集
         questionDTO.setUser(user);
         return questionDTO;
