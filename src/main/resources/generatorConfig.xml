@@ -30,8 +30,8 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table  tableName="user" domainObjectName="User" >
-            <property name="useActualColumnNames" value="false"/>
-        </table>
+        <table  tableName="user" domainObjectName="User" ></table>
+        <table  tableName="question" domainObjectName="Question" ></table>
+
     </context>
 </generatorConfiguration>
