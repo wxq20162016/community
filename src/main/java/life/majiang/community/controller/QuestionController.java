@@ -19,6 +19,8 @@ public class QuestionController {
                            Model model
     ){
         QuestionDTO questionDTO=questionService.getById(id);
+        //累加阅读数 查出字段再累加 当访问量大的时候不准确 应该基于数据库字段自身的累加方法
+        questionService.incView(id);
         model.addAttribute("question",questionDTO);
         return "question";
     }

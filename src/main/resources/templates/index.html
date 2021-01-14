@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
     <!--先引入jquery 再引入bootstrap -->
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.js" type="application/javascript"></script>
@@ -21,8 +22,8 @@
             <!--/*@thymesVar id="pagination" type=""*/-->
             <div class="media"  th:each="question : ${pagination.questions}" >
                 <div class="media-left">
-                    <a href="#">
-                        <img class="media-object img-circle" src="http://bick.playerct.com/tx.jpg" alt="...">
+                    <a th:href="@{'question/'+${question.id}}">
+                        <img class="media-object img-circle" src="http://bick.playerct.com/tx.jpg"  alt="...">
                     </a>
                 </div>
                 <div class="media-body">
