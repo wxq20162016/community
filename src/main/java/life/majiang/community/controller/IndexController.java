@@ -33,4 +33,8 @@ public class IndexController {
 
         return "index";
     }
+    @GetMapping("/error")
+    public String error(){
+        return "error";
+    }
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>xiaoxin community</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!--先引入jquery 再引入bootstrap -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js" type="application/javascript"></script>
+
+</head>
+<body>
+<div class="jumbotron">
+    <h1>出错啦!</h1>
+    <p th:text="${message}">很抱歉，您要访问得页面不存在</p>
+    <p><a class="btn btn-primary btn-lg" href="/" role="button">回到主页</a></p>
+</div>
+</body>
+</html>
