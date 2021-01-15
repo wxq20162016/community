@@ -16,3 +16,6 @@ mysql8.0 以上需要更改 mysql-connector-java 依赖版本
 和spring.datasource.driver-class-name 的值
 ## 逆向工程构建命令 自动根据数据库字段生成pojo对象和对应的mapper文件
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+
+## postman app没有登录
+添加cookie token= 浏览器的token即可
