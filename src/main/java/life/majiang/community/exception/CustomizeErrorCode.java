@@ -5,7 +5,10 @@ public enum CustomizeErrorCode  implements ICustomizeErrorCode {
     QUESTION_NOT_FOUND(2001,"你找的问题不在了11"),
     TARGET_PARAM_NOT_FOUND(2002,"未选中任何问题或评论进行回复"),
     NO_LOGIN(2003,"未登录不能进行评论,请先登录"),
-    SYS_ERROR(2004,"页面错误11");
+    SYS_ERROR(2004,"页面错误11"),
+    TYPE_PARAM_WRONG(2005,"评论类型错误或不存在"),
+    COMMENT_NOT_FOUNT(2006,"你操作的评论不存在了");
+
     @Override
     public String getMessage() {
         return message;

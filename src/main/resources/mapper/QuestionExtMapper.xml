@@ -18,11 +18,18 @@
     <result column="tag" jdbcType="VARCHAR" property="tag" />
     <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
   </resultMap>
-
   <update id="incView" parameterType="life.majiang.community.model.Question">
     update question
     set
     view_count =view_count + #{viewCount,jdbcType=INTEGER}
     where id = #{id}
   </update>
+
+  <update id="incCommentCount" parameterType="life.majiang.community.model.Question">
+    update question
+    set
+    comment_count =comment_count + #{commentCount,jdbcType=INTEGER}
+    where id = #{id}
+  </update>
+
 </mapper>

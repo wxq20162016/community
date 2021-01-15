@@ -28,7 +28,7 @@ public class PublishController {
     private QuestionService questionService;
 
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable(name="id") Integer id,
+    public String edit(@PathVariable(name="id") Long id,
                        Model model
 
     ){
@@ -51,7 +51,7 @@ public class PublishController {
             @RequestParam("description") String description,
             @RequestParam("tag") String tag,
             //required false表示可以为空
-            @RequestParam(value = "id",required = false) Integer id,
+            @RequestParam(value = "id",required = false) Long id,
             HttpServletRequest request,
             Model model){
         model.addAttribute("title",title);

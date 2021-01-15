@@ -11,4 +11,16 @@ public enum  CommentTypeEnums {
     CommentTypeEnums(Integer type) {
         this.type = type;
     }
+
+    public static boolean isExist(Integer type) {
+        for (CommentTypeEnums commentTypeEnums : CommentTypeEnums.values()) {
+            if(commentTypeEnums.getType() == type){
+                return true;
+            }
+        }
+        return false;
+     }
+
+
+
 }
