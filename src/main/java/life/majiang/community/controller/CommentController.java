@@ -48,10 +48,7 @@ public class CommentController {
         comment.setCommentator(user.getId());
         comment.getLikeCount(0L);
         commentService.insert(comment);
-        Map<Object, Object> objectObjectHashMap = new HashMap<>();
-        objectObjectHashMap.put("message","成功");
-
-        return objectObjectHashMap;
+        return ResultDTO.okOf();
 
     }
 
