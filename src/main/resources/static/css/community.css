@@ -19,3 +19,10 @@ body{
 .jumbotron{
     margin-left: 740px;
 }
+.btn-comment{
+    float:right;
+    margin-bottom: 10px;
+}
+.comment{
+    margin: 10px 0;
+}
