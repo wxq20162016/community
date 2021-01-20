@@ -1,6 +1,10 @@
 function post(){
     var questionId = $("#question_id").val();
     var content = $("#comment_content").val();
+    if(!content){
+        alert("内容不能为空");
+        return ;
+    }
     console.log(questionId);
     console.log(content);
     var data= {
@@ -17,7 +21,8 @@ function post(){
         contentType:"application/json",
         success:function (res){
             if(res.code==200){
-                $("#comment_section").hide();
+               window.location.reload();
+             //   $("#comment_section").hide();
             }else {
                 if(res.code==2003){
                     var isAccepted = confirm(res.message);

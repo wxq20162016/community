@@ -8,6 +8,7 @@ import life.majiang.community.mapper.CommentMapper;
 import life.majiang.community.model.Comment;
 import life.majiang.community.model.User;
 import life.majiang.community.service.CommentService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class CommentController {
         if(user ==null){
             return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
         }
-        if(commentCreateDTO == null || commentCreateDTO.getContent()==null ||commentCreateDTO.getContent()=="" ){
+        if(commentCreateDTO == null || StringUtils.isBlank(commentCreateDTO.getContent())){
             return ResultDTO.errorOf(CustomizeErrorCode.COMMENT_IS_EMPTY);
 
         }
