@@ -19,3 +19,7 @@ mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 
 ## postman app没有登录
 添加cookie token= 浏览器的token即可
+
+
+##bootstrap图标定制
+https://www.runoob.com/try/demo_source/bootstrap-glyph-customization.htm
