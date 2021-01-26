@@ -59,7 +59,7 @@
             <h4 ><span th:text="${question.commentCount}"></span><span>个回复</span></h4>
         <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp">
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:each="comment:${comments}"  style="margin-bottom:20px">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:each="comment:${comments}">
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
@@ -76,14 +76,44 @@
                         <span th:text="${comment.content}">我是回复内容</span>
                         <div class="menu">
                             <span class="glyphicon glyphicon-thumbs-up  comment-ico" aria-hidden="true"></span>
-                            <span class="glyphicon glyphicon-comment comment-ico" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-comment comment-ico" th:data-id="${comment.id}" aria-hidden="true"   onclick="collapseComments(this)"></span>
                             <span class="comment-span" th:text="${#dates.format(comment.gmtCreate,'yyyy-MM-dd HH:mm')}" ></span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 collapse sub-comment" th:id="${'comment-'+comment.id}">
+                            <!--二级评论-->
+                            <div >
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:each="comment:${comments}">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object img-thumbnail"
+                                                     src="/img/tx.jpg" style="width: 100px;height: 100px;">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h3 class="media-heading" >
+                                                <div style="margin-top: 19px;">
+                                                    <span th:text="${comment.user.name}"></span>
+                                                </div>
+                                            </h3>
+                                            <span th:text="${comment.content}">我是回复内容</span>
+                                            <div class="menu">
+                                                <span class="comment-span" th:text="${#dates.format(comment.gmtCreate,'yyyy-MM-dd HH:mm')}" ></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" class="form-control" placeholder="评论一下......">
+                                <button type="button" class="btn btn-success pull-right">评论</button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-
 
 
             </div>

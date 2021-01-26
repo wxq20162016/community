@@ -37,5 +37,27 @@ function post(){
             }
             console.log(res);
         }
-    })
+    });
+}
+function collapseComments(e){
+    var id=e.getAttribute("data-id");
+    var comments = $("#comment-"+id);
+    console.log(comments);
+    //获取二级 评论状态的展开状态
+    var collapse = e.getAttribute("data-collapse");
+    if(collapse){
+        //折叠二级评论
+        comments.removeClass("in");
+        e.removeAttribute("data-collapse");
+        e.classList.remove("active");
+        console.log(222);
+    }else{
+        //展开二级评论
+        comments.addClass("in");
+        //标记评论展开状态
+        e.setAttribute("data-collapse","in");
+        e.classList.add("active")
+        console.log(e.getAttribute("data-collapse")+'11111222');
+    }
+
 }
