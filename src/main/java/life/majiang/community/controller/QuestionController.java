@@ -1,8 +1,8 @@
 package life.majiang.community.controller;
 
-import life.majiang.community.dto.CommentCreateDTO;
 import life.majiang.community.dto.CommentDTO;
 import life.majiang.community.dto.QuestionDTO;
+import life.majiang.community.enums.CommentTypeEnums;
 import life.majiang.community.service.CommentService;
 import life.majiang.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class QuestionController {
                            Model model
     ){
         QuestionDTO questionDTO=questionService.getById(id);
-       List<CommentDTO> comments= commentService.listByQuestionId(id);
+       List<CommentDTO> comments= commentService.listBytargetId(id, CommentTypeEnums.QUESTION);
 
         //累加阅读数 查出字段再累加 当访问量大的时候不准确 应该基于数据库字段自身的累加方法
         questionService.incView(id);
