@@ -30,7 +30,7 @@ function comment2target(targetId,type,content){
                 if(res.code==2003){
                     var isAccepted = confirm(res.message);
                     if(isAccepted){
-                        window.open("https://github.com/login/oauth/authorize?client_id=7491061646038a245120&scope=user&state=1");
+                        window.open("https://github.com/login/oauth/authorize?client_id=c1613313d2e5b5169a96&scope=user&state=1");
                         window.localStorage.setItem("closable",true);
                     }
                 }else{
@@ -119,8 +119,5 @@ function collapseComments(e){
             });
         }
 
-
-
     }
-
 }
