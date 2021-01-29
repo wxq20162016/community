@@ -161,11 +161,10 @@ public class QuestionService {
         questionMapper.deleteByPrimaryKey(id);
         //删除问题下的评论
         CommentExample commentExample = new CommentExample();
-
         commentExample.createCriteria()
                 .andParentIdEqualTo(id)
                 .andTypeEqualTo(1);
-        //查出评论id根据评论id删除子评论
+        //查出评论id根据评论id删除子评论二级评论
         List<Comment> comments = commentMapper.selectByExample(commentExample);
         for (Comment comment : comments) {
             CommentExample secComment = new CommentExample();
@@ -175,10 +174,6 @@ public class QuestionService {
             commentMapper.deleteByExample(secComment);
         }
         commentMapper.deleteByExample(commentExample);
-        //删除评论下的二级评论
-
-
-
         return null;
     }
 }
