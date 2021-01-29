@@ -1,21 +1,22 @@
 package life.majiang.community.service;
 
 
+import life.majiang.community.dto.CommentDTO;
 import life.majiang.community.dto.PaginationDTO;
 import life.majiang.community.dto.QuestionDTO;
 import life.majiang.community.exception.CustomizeErrorCode;
 import life.majiang.community.exception.CustomizeException;
+import life.majiang.community.mapper.CommentMapper;
 import life.majiang.community.mapper.QuestionExtMapper;
 import life.majiang.community.mapper.QuestionMapper;
 import life.majiang.community.mapper.UserMapper;
-import life.majiang.community.model.Question;
-import life.majiang.community.model.QuestionExample;
-import life.majiang.community.model.User;
+import life.majiang.community.model.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,6 +31,8 @@ public class QuestionService {
     private QuestionMapper questionMapper;
     @Autowired
     private QuestionExtMapper questionExtMapper;
+    @Autowired
+    private CommentMapper commentMapper;
     public PaginationDTO list(Integer page, Integer size) {
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalCount=(int)questionMapper.countByExample(new QuestionExample());
@@ -134,7 +137,6 @@ public class QuestionService {
 
     public List<QuestionDTO> selectRelated(QuestionDTO queryDTO) {
         if(StringUtils.isEmpty(queryDTO.getTag())){
-            System.out.println(66);
             return new ArrayList<>();
         }
         String[] tags = StringUtils.split(queryDTO.getTag(), ',');
@@ -142,10 +144,7 @@ public class QuestionService {
         Question question = new Question();
         question.setId(queryDTO.getId());
         question.setTag(regexpTag);
-        System.out.println(regexpTag);
-        System.out.println(question.getTag());
         List<Question> questions = questionExtMapper.selectRelated(question);
-        System.out.println(questions);
         List<QuestionDTO> questionDTOS = questions.stream().map(q -> {
             QuestionDTO questionDTO = new QuestionDTO();
             //格式化数据以后重新赋值给对象
@@ -154,5 +153,32 @@ public class QuestionService {
         }).collect(Collectors.toList());
 
         return questionDTOS;
+    }
+    @Transactional
+    //自己添加的功能教程没有
+    public QuestionDTO delById(Long id) {
+        //删除问题
+        questionMapper.deleteByPrimaryKey(id);
+        //删除问题下的评论
+        CommentExample commentExample = new CommentExample();
+
+        commentExample.createCriteria()
+                .andParentIdEqualTo(id)
+                .andTypeEqualTo(1);
+        //查出评论id根据评论id删除子评论
+        List<Comment> comments = commentMapper.selectByExample(commentExample);
+        for (Comment comment : comments) {
+            CommentExample secComment = new CommentExample();
+            secComment.createCriteria()
+                    .andParentIdEqualTo(comment.getId())
+                    .andTypeEqualTo(2);
+            commentMapper.deleteByExample(secComment);
+        }
+        commentMapper.deleteByExample(commentExample);
+        //删除评论下的二级评论
+
+
+
+        return null;
     }
 }

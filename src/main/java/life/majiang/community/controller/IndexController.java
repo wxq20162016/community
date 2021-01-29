@@ -29,7 +29,8 @@ public class IndexController {
         PaginationDTO pagination=questionService.list(page,size);
             model.addAttribute("pagination",pagination);
             model.addAttribute("clientId",clientId);
-            System.out.println(pagination);
+            //打印首页数据
+          //  System.out.println(pagination);
 
         return "index";
     }

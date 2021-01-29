@@ -82,7 +82,8 @@ public class CommentService {
         Set<Long> commentators = comments.stream().map(comment -> comment.getCommentator()).collect(Collectors.toSet());
         List<Long> userIds=new ArrayList<>();
         userIds.addAll(commentators);
-        System.out.println(commentators);
+        //打印评论人
+      //  System.out.println(commentators);
         //获取评论人并转换为Map
         UserExample userExample = new UserExample();
         userExample.createCriteria()
@@ -94,7 +95,7 @@ public class CommentService {
       //  }
 
         Map<Long, User> userMap = users.stream().collect(Collectors.toMap(user -> user.getId(), user -> user));
-        System.out.println(userMap);
+       // System.out.println(userMap);
         //转换 comment 为commentDTO
         List<CommentDTO> commentDTOS = comments.stream().map(comment -> {
             CommentDTO commentDTO = new CommentDTO();

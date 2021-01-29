@@ -39,6 +39,11 @@ public class PublishController {
         model.addAttribute("id",question.getId());
         return "publish";
     }
+    @GetMapping("/del/{id}")
+    public  String del(@PathVariable(name="id") Long id){
+        QuestionDTO question=questionService.delById(id);
+        return "redirect:/";
+    }
 
     @GetMapping("/publish")
     public String publish(){

@@ -52,7 +52,7 @@ public class AuthorizeController {
         accesstokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accesstokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
-        System.out.println(githubUser.getName());
+      //  System.out.println(githubUser.getName());
         if(githubUser !=null){
             //redirect 不拼接url 直接跳转
             //登录成功写 cookie和sessions
