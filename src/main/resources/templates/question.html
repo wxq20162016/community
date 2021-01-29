@@ -161,11 +161,10 @@
         <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h4>相关问题</h4>
-            <ul>
-                <li th:each="related : ${relatedQuestions}">
-                    <a href="" th:text="${related.title}"></a>
+            <ul class="question-related">
+                <li th:each="related : ${relatedQuestions}"  >
+                    <a href="" th:text="${related.title}" th:href="@{'/question/'+${related.id}}"></a>
                 </li>
-                <li>88888888</li>
             </ul>
         </div>
 

@@ -35,7 +35,7 @@ public class PaginationDTO {
           3 1,2,3,4,5,6,7
           5 2,3,4,5,6,7,8
        */
-        System.out.println(totalPage);
+        //System.out.println(totalPage);
         this.page=page;
         pages.add(page);
         for(int i=1; i<=3; i++){

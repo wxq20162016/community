@@ -83,3 +83,9 @@ body {
     padding-bottom: 5px;
     margin-top: 5px;
 }
+
+.question-related{
+    list-style: none;
+    padding-left: 2px;
+    line-height: 25px;
+}
