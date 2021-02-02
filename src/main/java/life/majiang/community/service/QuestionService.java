@@ -45,10 +45,12 @@ public class QuestionService {
         questionExample.setOrderByClause("gmt_create desc");
 
         List<Question> questions = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
+
         List<QuestionDTO> questionDTOList=new ArrayList<>();
 
         for (Question question : questions) {
             User user =userMapper.selectByPrimaryKey(question.getCreator());
+
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question,questionDTO);
             questionDTO.setUser(user);

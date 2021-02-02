@@ -25,6 +25,9 @@
                     <li th:if="${session.user !=null}">
                         <a href="/publish">发布文章</a>
                     </li>
+                    <li>
+                        <a href="/profile/relies">通知 <span class="badge">42</span></a>
+                    </li>
                     <li th:if="${session.user ==null}" ><a  th:href="'https://github.com/login/oauth/authorize?client_id=7491061646038a245120&scope=user&state=1'">登录</a></li>
                     <li class="dropdown" th:if="${session.user !=null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
