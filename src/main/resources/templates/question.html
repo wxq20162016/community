@@ -8,11 +8,17 @@
     <link rel="stylesheet" href="/css/community.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/editormd.preview.min.css">
     <!--先引入jquery 再引入bootstrap -->
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.js" type="application/javascript"></script>
     <script src="/js/community.js" type="application/javascript"></script>
     <script src="/js/moment.js" type="application/javascript"></script>
+
+
+    <script src="/js/editormd.min.js"></script>
+    <script src="/js/lib/marked.min.js"></script>
+    <script src="/js/lib/prettify.min.js"></script>
 
 </head>
 <body>
@@ -29,7 +35,16 @@
                 阅读数：<span th:text="${question.viewCount}">
             </span></span>
             <hr>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:text="${question.description}" style="margin-bottom: 10px"> </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"  id="question-view" style="margin-bottom: 10px">
+            <textarea style="display:none;" th:text="${question.description}" ></textarea>
+        </div>
+            <script type="text/javascript">
+                $(function() {
+                    editormd.markdownToHTML("question-view", {});
+                });
+            </script>
+
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 5px;">
           <div>
               <span class="label label-info question-tag" th:each=" tag : ${question.tag.split(',')}">
@@ -70,7 +85,10 @@
                     </div>
                 </div>
                 <input type="hidden" id="question_id" th:value="${question.id}">
-                <textarea class="form-control comment" rows="6" id="comment_content"></textarea>
+
+                <textarea  class="form-control comment" rows="6" id="comment_content"></textarea>
+
+
                 <button type="button" class="btn btn-success btn-comment" onclick="post()">回复</button>
             </div>
             <h4 ><span th:text="${question.commentCount}"></span><span>个回复</span></h4>

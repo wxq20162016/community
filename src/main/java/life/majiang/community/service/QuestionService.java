@@ -57,7 +57,7 @@ public class QuestionService {
             questionDTOList.add(questionDTO);
 
         }
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
         //service 层给dto层传数据
         return paginationDTO;
     }
@@ -85,9 +85,8 @@ public class QuestionService {
             BeanUtils.copyProperties(question,questionDTO);
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
-
         }
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
         //service 层给dto层传数据
         return paginationDTO;
     }

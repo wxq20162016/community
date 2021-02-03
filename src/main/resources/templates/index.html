@@ -31,7 +31,7 @@
             <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 发现</h2>
             <hr>
             <!--/*@thymesVar id="pagination" type=""*/-->
-            <div class="media"  th:each="question : ${pagination.questions}" >
+            <div class="media"  th:each="question : ${pagination.data}" >
                 <div class="media-left">
 
                     <a th:href="@{'question/'+${question.id}}">
